@@ -44,7 +44,7 @@ def add_teacher_view(request):
         context = {'form': form}
         return render(request, 'teachers/add_teacher.html', context)
     else:
-        return render(request, 'admin_tools/permission_required.html')
+        return render(request, 'teachers/admin_tools/permission_required.html')
 
 
 @user_passes_test(user_is_verified)

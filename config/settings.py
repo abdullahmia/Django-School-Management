@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'pages',
     'articles',
     'institute',
+    'attendance_reporting',
 
     # third party apps
     'crispy_forms',

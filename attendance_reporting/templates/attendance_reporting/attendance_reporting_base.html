@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+{#  <link href="{% static 'img/favicon.ico' %}" rel="icon">#}
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static 'attendance_reporting/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'attendance_reporting/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'attendance_reporting/css/ruang-admin.min.css' %}" rel="stylesheet">
+
+  <!-- Font Awesome Pro -->
+  <link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
+
+{#    Animate.css#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        td{text-align: center}
+        th{font-weight: normal;color: black!important;text-align: center}
+        {% block custom_css %}
+
+        {% endblock %}
+    </style>
+
+</head>
+
+<body>
+
+    {% block main_content %}
+
+    {% endblock %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <script src="{% static 'attendance_reporting/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'attendance_reporting/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'attendance_reporting/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'attendance_reporting/js/ruang-admin.min.js' %}"></script>
+  <script src="{% static 'attendance_reporting/vendor/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'attendance_reporting/js/demo/chart-area-demo.js' %}"></script>
+
+
+    {% block js %}
+
+    {% endblock %}
+
+
+</html>
+</body>

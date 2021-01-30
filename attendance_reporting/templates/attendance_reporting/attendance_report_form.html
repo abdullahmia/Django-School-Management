@@ -1,0 +1,226 @@
+{% extends 'attendance_reporting/attendance_reporting_base.html' %}
+{% load crispy_forms_tags %}
+{% block main_content %}
+
+
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show animate__animated animate__backInDown" role="alert">
+                       {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+    <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">DPI Daily Class Tracking</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Add Class Tracking</li>
+            </ol>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-11">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                  <form method="post" id="dailyform" data-department-url="#">
+
+                      {% csrf_token %}
+
+                      {{ form|crispy }}
+
+{#                    <div class="form-group">#}
+{#                      <label for="exampleInputEmail1">Date of the Class</label>#}
+{#                      <input type="date" name="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"#}
+{#                        placeholder="">#}
+{#                    </div>#}
+{##}
+{##}
+{#                    <table class="table">#}
+{#                      <thead>#}
+{#                        <tr>#}
+{#                          <th style='text-align: left;' scope="col">Semester</th>#}
+{#                          <th style='text-align: left;' scope="col">Department</th>#}
+{#                          <th style='text-align: left;' scope="col">Subjects</th>#}
+{#                        </tr>#}
+{#                      </thead>#}
+{#                      <tbody>#}
+{#                        <tr>#}
+{#                          <td>#}
+{#                            <select name="semester" id="semester" class="form-control form-control-sm  mb-3 col-md-4 one_drop">#}
+{#                            <option>Select Semester</option>#}
+{##}
+{#                              {% for semester in semesters %}#}
+{#                                <option value="{{ semester.id }}">{{ semester.number }}st</option>#}
+{#                              {% endfor %}#}
+{#                          </select>#}
+{#                        </td>#}
+{#                          <td>#}
+{##}
+{#                            <select name="department" id="department" class="form-control form-control-sm  mb-3 col-md-4 one_drop">#}
+{##}
+{#                            </select>#}
+{#                          </td>#}
+{#                          <td>#}
+{##}
+{#                            <select name="subjects" id="subjects" class="form-control form-control-sm  mb-3 col-md-4 one_drop">#}
+{##}
+{#                            </select>#}
+{#                          </td>#}
+{#                        </tr>#}
+{##}
+{#                      </tbody>#}
+{#                    </table>#}
+{##}
+{#                      <div class="row">#}
+{#                        <div class="col-md-5">#}
+{#                          <label style="padding-left: 7px;" for="exampleInputEmail1">Select Place</label>#}
+{#                        </div>#}
+{#                        <div class="col-md-5">#}
+{#                          <label style="padding-left: 21px;" for="exampleInputEmail1">Class Durations</label>#}
+{#                        </div>#}
+{#                      </div>#}
+{#                  <div class="row drop_down">#}
+{##}
+{#                      <select name="class_taken" class="form-control form-control-sm  mb-3 col-md-5 two_drop">#}
+{#                        {% for place in p_class %}#}
+{#                            <option value="{{place.place}}">{{place.place}}</option>#}
+{#                        {% endfor %}#}
+{##}
+{##}
+{#                      </select>#}
+{##}
+{#                      <select name="durations" class="form-control form-control-sm  mb-3 col-md-5 two_drop">#}
+{#                            {% for time in classes_duration %}#}
+{#                            <option value="{{ time.time }}">{{ time.time }}</option>#}
+{#                            {% endfor %}#}
+{##}
+{#                      </select>#}
+{#                    </div>#}
+{#                      <div class="form-group">#}
+{#                      <label for="exampleInputEmail1">Attend Student</label>#}
+{#                      <input type="number" name="attent_student" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+{#                    </div>#}
+{##}
+{#                      <div class="form-group">#}
+{#                          <label for="exampleInputEmail1">Total Remain present till end the class</label>#}
+{#                          <input type="number" name="remain_student" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">#}
+{#                        </div>#}
+{##}
+{#                      <div class="form-group">#}
+{#                          <div style="margin-top: 30px!important; margin-bottom: 20px!important;" class="row">#}
+{#                              <div style="margin-left: 25px;" class="custom-control custom-switch col-md-4">#}
+{#                                <input name="assignment" type="checkbox" class="custom-control-input" id="customSwitch1">#}
+{#                                <label class="custom-control-label" for="customSwitch1">Assignment</label>#}
+{#                              </div>#}
+{##}
+{#                              <div  class="custom-control custom-switch col-md-4">#}
+{#                                <input name="quiz" type="checkbox" class="custom-control-input" id="customSwitch2">#}
+{#                                <label class="custom-control-label" for="customSwitch2">Quiz Test</label>#}
+{#                              </div>#}
+{##}
+{#                          </div>#}
+{##}
+{#                          <div class="form-group">#}
+{#                              <label for="exampleInputEmail1">Phone Call Quantity</label>#}
+{#                              <input type="text" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+{#                            </div>#}
+{##}
+{#                           <div class="input-group mb-3">#}
+{#                                <div class="input-group-prepend">#}
+{#                                  <span class="input-group-text">Google Drive Link</span>#}
+{#                                </div>#}
+{#                                <textarea name="drive_link" class="form-control" aria-label="With textarea"></textarea>#}
+{#                           </div>#}
+{##}
+{#                    </div>#}
+{##}
+{##}
+{#                    <div class="form-group">#}
+{#                    </div>#}
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+    </div>
+
+
+      </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Dark Team</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $("#semester").change(function () {
+            var url = $("#dailyform").attr('data-department-url');
+            var semesterid = $(this).val();
+            console.log(semesterid)
+
+            $.ajax({
+                url: url,
+                data: {
+                    'semester': semesterid,
+                },
+                success: function (data) {
+                    $("#department").html(data);
+                }
+            });
+        });
+
+
+        $("#department").change(function () { //django-model-form created this id
+          var urls = $("#dailyform").attr("data-department-url");  // get the url of the `load_cities` view
+          var did = $(this).val();  // get the selected country ID from the HTML input
+
+          $.ajax({                       // initialize an AJAX request
+            url: '#',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/) person_form.html template has this url var
+            data: {
+              'department': did,       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#subjects").html(data);  // replace the contents of the city input with the data that came from the server
+            }
+          });
+
+        });
+
+
+    </script>
+
+
+{% endblock %}

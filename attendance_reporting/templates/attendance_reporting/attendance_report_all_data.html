@@ -1,0 +1,154 @@
+{% extends 'attendance_reporting/attendance_reporting_base.html' %}
+{% block main_content %}
+
+<div id="page-top">
+  <div id="wrapper">
+
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">All Class Record</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a style="color: #0D3349" href="#">All Class Record</a></li>
+            </ol>
+          </div>
+
+
+          <div class="row">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              {% for data in all_data|slice:1 %}
+
+                  <div class="card mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Today's Class Record <a style="margin-left: 15px" href="{% url 'mypdf' data.class_date %}" target="_blank" class="btn btn-success">Export PDF</a></h6>
+                    </div>
+                    <div class="table-responsive p-3">
+                      <table class="table align-items-center table-flush" id="dataTable">
+                        <thead class="thead-light">
+                          <tr class="table__head">
+                            <th>Teacher</th>
+                            <th>Semester</th>
+                            <th>Department</th>
+                            <th>Subject</th>
+                            <th>Attend Student</th>
+                            <th>Percentage</th>
+                            <th>Class Date</th>
+                            <th>Entry Date</th>
+
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% if all_data %}
+                            {% for data in all_data %}
+                                <tr>
+                                    <td>{{ data.teacher }}</td>
+                                    <td>{{ data.semester }}</td>
+                                    <td>{{ data.department }}</td>
+                                    <td>{{ data.subjects }}</td>
+                                    <td>{{ data.attend_student }}</td>
+                                    <td>85%</td>
+                                    <td>{{ data.class_date }}</td>
+                                    <td>{{ data.entry_date|date }}</td>
+                                  </tr>
+                            {% endfor %}
+
+                        {% endif %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              {% endfor %}
+
+
+              {% for data in yes_data|slice:1 %}
+
+                  <div class="card mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Yesterday Class Record <a style="margin-left: 15px" href="{% url 'mypdf' data.class_date %}" target="_blank" class="btn btn-success">Export PDF</a></h6>
+                    </div>
+                    <div class="table-responsive p-3">
+                      <table class="table align-items-center table-flush" id="dataTable">
+                        <thead class="thead-light">
+                          <tr class="table__head">
+                            <th>Teacher</th>
+                            <th>Semester</th>
+                            <th>Department</th>
+                            <th>Subject</th>
+                            <th>Attend Student</th>
+                            <th>Percentage</th>
+                            <th>Class Date</th>
+                            <th>Entry Date</th>
+
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% if yes_data %}
+                            {% for data in yes_data %}
+                                <tr>
+                                    <td>{{ data.teacher }}</td>
+                                    <td>{{ data.semester }}</td>
+                                    <td>{{ data.department }}</td>
+                                    <td>{{ data.subjects }}</td>
+                                    <td>{{ data.attend_student }}</td>
+                                    <td>{{ data.avarage }}</td>
+                                    <td>{{ data.class_date }}</td>
+                                    <td>{{ data.entry_date|date }}</td>
+                                  </tr>
+                            {% endfor %}
+
+                        {% endif %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              {% endfor %}
+
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+          <!--  Link -->
+          <div class="row">
+            <div class="col-lg-12">
+              <p>Daffodil Polytechnic Institute is One of the leading & Best Polytechnic Institute in Bangladesh. Daffodil Polytechnic Institute is one of the best sister concerns of Daffodil Family</p>
+            </div>
+          </div>
+
+
+        </div>
+        <!---Container Fluid-->
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="" target="_blank">Team BackSlash</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+{% endblock %}

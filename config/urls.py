@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('dashboard/', dashboard, name='index_view'),
+    path('dashboard/ar/', include('attendance_reporting.urls')),
     path('accounts/', include('allauth.urls')),
     path('blog/', include('articles.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
