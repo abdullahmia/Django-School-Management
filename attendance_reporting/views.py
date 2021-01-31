@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 from academics.models import Department, Subject, Semester
 
@@ -29,6 +29,7 @@ def attendance_reporting_class_record(request):
 def attendance_reporting_add_form(request):
     semesters = Semester.objects.all()
     form = AddAttendanceReportForm(request.POST)
+
     ctx = {
         'semesters': semesters,
         'form': form,
